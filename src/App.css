@@ -1,38 +1,475 @@
+/* General */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Paytone+One&display=swap");
+
+body {
+  background-color: rgb(232, 234, 226);
+  color: rgb(34, 34, 34);
+  overflow-x: hidden;
+}
+
 .App {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Landing Page*/
+.landing {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 3;
+}
+
+.landing-image {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 4;
+}
+
+.blue-wave {
+  position: absolute;
+  width: auto;
+  min-width: 80vw;
+  height: auto;
+  min-height: 101vh;
+  top: 0px;
+  left: 0px;
+  z-index: 5;
+}
+
+.foobar-logo-landing {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  top: 100px;
+  left: calc(50% - 100px);
+  z-index: 6;
+}
+
+.qr-sample {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  bottom: 100px;
+  border-radius: 10px;
+  left: calc(50% - 50px);
+  z-index: 7;
+}
+
+.instructions {
+  color: rgb(255, 255, 255);
+  position: absolute;
+  bottom: 50px;
+  width: 340px;
+  left: calc(50% - 170px);
+  z-index: 7;
+}
+
+/* Header */
+h1 {
+  font-family: "Paytone One", sans-serif;
+  margin: 200px auto;
+  color: rgb(255, 255, 255);
+  font-size: 5em;
+}
+
+.foobar-logo {
+  position: absolute;
+  width: 50px;
+  height: auto;
+  padding: 30px;
+}
+
+.header-image {
+  position: absolute;
+  width: 100%;
+  max-width: 1000px;
+  top: 100px;
+  right: 0;
+  object-fit: cover;
+  height: auto;
+  z-index: -9;
+}
+
+.orange-wave {
+  position: absolute;
+  top: 400px;
+  left: -10px;
+  width: 103%;
+  height: auto;
+  z-index: -8;
+}
+
+/* Product */
+.ProductList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.Product {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 300px;
+  height: 250px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px;
+  margin: 10px;
+}
+
+.Product h3 {
+  font-family: "Paytone One", sans-serif;
+  color: rgb(171, 207, 234);
+  margin: 10px;
+}
+
+.Product h4 {
+  font-family: "Montserrat", sans-serif;
+  color: rgb(229, 117, 10);
+  font-weight: 500;
+  font-size: smaller;
+  margin: 5px 10px;
+}
+
+.Product p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: smaller;
+  margin: 5px 10px;
+}
+
+.Product button {
+  background-color: rgb(255, 255, 255);
+  width: 100px;
+  color: rgb(229, 117, 10);
+  border: 2px solid rgb(229, 117, 10);
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-top: 10px;
+  margin-left: 190px;
+  cursor: pointer;
+}
+
+.Product button:hover {
+  background-color: rgb(229, 117, 10);
+  color: rgb(255, 255, 255);
+}
+
+.beer-logo {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Cart */
+.Cart {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(232, 234, 226);
+  font-family: "Montserrat", sans-serif;
+  width: 100vw;
+  min-height: 100vh;
+  max-height: 100%;
+  z-index: 1;
+  overflow: scroll;
+}
+
+.CartContent {
+  background-color: rgb(232, 234, 226);
+  padding-top: 100px;
+  text-align: center;
+  width: 350px;
+  margin: 0 auto;
+}
+
+.CartHeader,
+.CartSummary {
+  display: flex;
+  flex-direction: row;
+  font-weight: bolder;
+  font-size: smaller;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.CartItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: smaller;
+}
+
+.p-width {
+  width: 80px;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.remove-btn {
+  font-size: 1.5em;
+  padding: 10px;
+}
+
+.cart-btn {
+  position: absolute;
+  font-size: 2em;
+  height: auto;
+  top: 20px;
+  right: 20px;
+  padding: 20px;
+}
+
+.x-btn {
+  position: absolute;
+  font-size: 2em;
+  height: auto;
+  top: 20px;
+  right: 20px;
+  padding: 20px;
+  z-index: 2;
+}
+
+/* Payment Form */
+.PaymentForm {
+  background-color: rgb(232, 234, 226);
+  overscroll-behavior: contain;
+  height: 400px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: left;
+  justify-content: center;
+  margin: 50px auto;
+  width: 200px;
+  position: relative;
+}
+
+form h3 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+form > input {
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  width: 200px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+form > label {
+  font-size: smaller;
+  margin-top: 10px;
+  margin-bottom: 3px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form-group {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 70px;
+  margin: 0;
+}
+
+.form-group > input {
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  width: 80px;
+}
+
+.form-group > label {
+  font-size: smaller;
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
+
+input:focus-within {
+  background-color: rgb(184, 158, 230);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+}
+
+.left {
+  position: absolute;
+  bottom: 80px;
+  left: 120px;
+}
+
+.submit-btn {
+  margin: 20px 30px;
+  background-color: transparent;
+  border: 2px solid rgb(134, 82, 232);
+  border-radius: 20px;
+  height: 40px;
+  font-weight: bolder;
+  color: rgb(134, 82, 232);
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: rgb(134, 82, 232);
+  color: rgb(255, 255, 255);
+}
+
+.submit-btn:disabled {
+  border: none;
+  background-color: rgb(134, 82, 232, 0.5);
+  color: rgb(255, 255, 255, 0.5);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+}
+
+footer h2 {
+  font-family: "Paytone One", sans-serif;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  margin: 100px;
+}
+
+/* Thank You Page */
+.thanks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(232, 234, 226);
+  width: 100vw;
+  height: 100vh;
+  z-index: 8;
+  text-align: center;
+}
+
+.thanks-content {
+  margin: 40vh auto;
+}
+
+.thanks-content > h1 {
+  font-size: 3em;
+  color: rgb(134, 82, 232);
+  margin: 0;
+}
+
+.thanks-content > p {
+  font-size: smaller;
+}
+
+.thanks-btn {
+  background-color: rgb(189, 215, 232, 0.8);
+  width: 120px;
   color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 10px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.thanks-btn:hover:hover {
+  background-color: rgb(189, 215, 232);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.wave-color-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  height: auto;
+}
+
+.wave-color-bottom {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  min-width: 100vw;
+  height: auto;
+}
+
+/* Media Queries */
+@media screen and (min-width: 800px) {
+  .landing-image {
+    position: absolute;
+    top: -300px;
+    height: auto;
   }
-  to {
-    transform: rotate(360deg);
+
+  .ProductList {
+    align-items: center;
+    justify-content: left;
+    margin-right: 200px;
+    margin-left: 50px;
+  }
+
+  .wave-color-top {
+    position: absolute;
+    top: -50px;
+  }
+
+  .wave-color-bottom {
+    position: absolute;
+    bottom: -50px;
+  }
+}
+
+/* UseState Classes and Feedback Animation */
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.feedback1 {
+  animation: feedback1 1s 1;
+}
+
+@keyframes feedback1 {
+  0% {
+    color: rgb(34, 34, 34);
+  }
+  50% {
+    color: rgb(134, 82, 232);
+    font-size: 110%;
+  }
+  100% {
+    color: rgb(34, 34, 34);
+  }
+}
+
+.feedback2 {
+  animation: feedback2 1s 1;
+}
+
+@keyframes feedback2 {
+  0% {
+    color: rgb(34, 34, 34);
+  }
+  50% {
+    color: rgb(134, 82, 232);
+    font-size: 110%;
+  }
+  100% {
+    color: rgb(34, 34, 34);
   }
 }
