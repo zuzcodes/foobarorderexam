@@ -55,13 +55,22 @@ function App() {
   }
 
   function addToCart(payload) {
-    const inCart = cart.findIndex((item) => item.name === payload.id);
+    const inCart = cart.findIndex((item) => item.id === payload.id);
     if (inCart === -1) {
       //add amount
       console.log(payload);
       const nextPayload = { ...payload };
       nextPayload.amount = 1;
       setCart((prevState) => [...prevState, nextPayload]);
+    } else {
+      //item already exists in the basket - modify the amount
+      const nextCart = cart.map((item) => {
+        if (item.id === payload.id) {
+          item.amount += 1;
+        }
+        return item;
+      });
+      setCart(nextCart);
     }
     handleFeedback();
   }
