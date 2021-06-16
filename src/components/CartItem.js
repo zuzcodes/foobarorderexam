@@ -1,12 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-export default function CartItem(props) {
+import { faChevronDown, faChevronUp, faTrash } from "@fortawesome/free-solid-svg-icons";
+export default function CartItem({name, amount, price, removeFromCart, modifyProductAmount}) {
   return (
     <div className="CartItems">
-      <p className="p-width">{props.name}</p>
-      <p>{props.amount}</p>
-      <p>{props.price},-</p>
-      <FontAwesomeIcon icon={faTimes} onClick={() => props.removeFromCart({ id: props.name })} className="remove-btn" />
+      <p className="p-width">{name}</p>
+      <FontAwesomeIcon icon={faChevronDown} onClick={() => {modifyProductAmount(name, -1);}} className="item-btn"/>
+      <p>{amount}</p>
+      <FontAwesomeIcon icon={faChevronUp} onClick={() => {modifyProductAmount(name, 1);}} className="item-btn"/>
+      <p>{price} DKK</p>
+      <FontAwesomeIcon icon={faTrash} onClick={() => removeFromCart({ id: name })} className="item-btn" />
     </div>
   );
 }

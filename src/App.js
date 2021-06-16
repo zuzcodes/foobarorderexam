@@ -16,6 +16,8 @@ function App() {
   const [isVisible, setVisible] = useState(true);
   const [hasFeedback, setFeedback] = useState(true);
   const [orderNumber, setOrderNumber] = useState("");
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(getAvailableProducts, []);
   useEffect(getProducts, []);
@@ -30,6 +32,9 @@ function App() {
       setTaps(filtered);
     }
   }, [products, availableProducts]);
+
+  useEffect(calcTotalAmount, [cart]);
+  useEffect(calcTotalPrice, [cart]);
 
   const handleToggle = () => {
     setActive(!isActive);
@@ -85,6 +90,35 @@ function App() {
     setCart(newCart);
   }
 
+  function modifyProductAmount(name, operand) {
+    const newCart = [...cart]
+    let i = 0;
+    for (i = 0; i < newCart.length; i++) {
+      if (newCart[i].name === name) {
+        if (newCart[i].amount + operand < 1)
+          console.log("Quantity is already 1");
+        else {
+          newCart[i].amount += operand;
+          setCart(newCart);
+        }
+        break;
+      }
+    }
+  }
+
+  function calcTotalAmount() {
+    let num = 0;
+    cart.forEach((item) => (num += item.amount));
+    setTotalAmount(num);
+  }
+
+  function calcTotalPrice() {
+    let num = 0;
+    cart.forEach((item) => { (num += item.amount * 49)
+    });
+    setTotalPrice(num);
+  }
+
   function post() {
     const data = cart.map((item) => {
       return { name: item.name, amount: item.amount };
@@ -113,16 +147,20 @@ function App() {
     console.log("Thank You");
   }
 
+  function reloadPage() {
+    window.location.reload();
+  }
+
   return (
     <div className="App">
       <LandingPage />
       <div className={isActive ? "hide" : "show"}>
         <FontAwesomeIcon icon={faTimes} onClick={handleToggle} className="x-btn" />
-        <Cart cart={cart} post={post} removeFromCart={removeFromCart} showOrderConfirmation={showOrderConfirmation} />
+        <Cart cart={cart} post={post} removeFromCart={removeFromCart} showOrderConfirmation={showOrderConfirmation} totalAmount={totalAmount} totalPrice={totalPrice} modifyProductAmount={modifyProductAmount}/>
       </div>
       <img alt="craft beers" className="header-image" src="../crafts.jpg" />
       <img alt="orange wave" className="orange-wave" src="../orange-wave.svg" />
-      <img alt="foobar logo" className="foobar-logo" src="../foobar-logo.png" />
+      <img alt="foobar logo" className="foobar-logo" src="../foobar-logo.png" onClick={reloadPage} />
       <div className={hasFeedback ? "feedback1" : "feedback2"}>
         <FontAwesomeIcon icon={faShoppingBasket} onClick={handleToggle} className="cart-btn" />
       </div>
