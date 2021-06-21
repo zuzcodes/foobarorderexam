@@ -220,6 +220,10 @@ h1 {
   text-align: left;
 }
 
+.p {
+  margin-left: 20px;
+}
+
 .item-btn {
   font-size: 1.2em;
   padding: 10px;

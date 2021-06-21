@@ -95,28 +95,26 @@ function App() {
     let i = 0;
     for (i = 0; i < newCart.length; i++) {
       if (newCart[i].name === name) {
-        if (newCart[i].amount + operand < 1)
-          console.log("Quantity is already 1");
+        if (newCart[i].amount + operand < 1);
         else {
           newCart[i].amount += operand;
           setCart(newCart);
         }
-        break;
       }
     }
   }
 
   function calcTotalAmount() {
-    let num = 0;
-    cart.forEach((item) => (num += item.amount));
-    setTotalAmount(num);
+    let totalAmount = 0;
+    cart.forEach((item) => (totalAmount += item.amount));
+    setTotalAmount(totalAmount);
   }
 
   function calcTotalPrice() {
-    let num = 0;
-    cart.forEach((item) => { (num += item.amount * 49)
+    let totalPrice = 0;
+    cart.forEach((item) => { (totalPrice += item.amount * 49)
     });
-    setTotalPrice(num);
+    setTotalPrice(totalPrice);
   }
 
   function post() {

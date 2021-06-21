@@ -16,9 +16,9 @@ export default function CartContent({ cart, removeFromCart, totalAmount, totalPr
       <hr />
       <div className="CartSummary">
         <p className="p-width">Total</p>
-        <p>{totalAmount}</p>
-        <p>{totalPrice} DKK</p>
-        <p><span></span></p>
+        <p className="p">{totalAmount}</p>
+        <p className="p">{totalPrice} DKK</p>
+        <p></p>
       </div>
     </section>
   );
