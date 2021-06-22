@@ -95,8 +95,7 @@ function App() {
     let i = 0;
     for (i = 0; i < newCart.length; i++) {
       if (newCart[i].name === name) {
-        if (newCart[i].amount + operand < 1);
-        else {
+        if (newCart[i].amount + operand > 0) {
           newCart[i].amount += operand;
           setCart(newCart);
         }
@@ -160,7 +159,7 @@ function App() {
       <img alt="orange wave" className="orange-wave" src="../orange-wave.svg" />
       <img alt="foobar logo" className="foobar-logo" src="../foobar-logo.png" onClick={reloadPage} />
       <div className={hasFeedback ? "feedback1" : "feedback2"}>
-        <FontAwesomeIcon icon={faShoppingBasket} onClick={handleToggle} className="cart-btn" />
+        <FontAwesomeIcon icon={faShoppingBasket} onClick={handleToggle} className="cart-btn" totalAmount/>
       </div>
       <h1>On Tap</h1>
       <ProductList product={taps} addToCart={addToCart} />
